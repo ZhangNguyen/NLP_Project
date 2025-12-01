@@ -1,0 +1,34 @@
+[
+  {
+    "name": "phở bò",
+    "price": 45000,
+    "category": "món chính",
+    "options": ["ít hành", "nhiều nước", "ít nước"],
+    "available": true,
+    "description": "Phở bò truyền thống, nước dùng thơm, thịt bò mềm."
+  },
+  {
+    "name": "bún chả",
+    "price": 40000,
+    "category": "món chính",
+    "options": ["thêm chả", "thêm bún"],
+    "available": true,
+    "description": "Bún chả Hà Nội với chả nướng và nước chấm đậm đà."
+  },
+  {
+    "name": "gà rán",
+    "price": 50000,
+    "category": "món chính",
+    "options": ["cay", "không cay"],
+    "available": false,
+    "description": "Gà rán giòn, hiện tạm hết hàng."
+  },
+  {
+    "name": "trà sữa",
+    "price": 30000,
+    "category": "đồ uống",
+    "options": ["ít đường", "ít đá", "trân châu"],
+    "available": true,
+    "description": "Trà sữa truyền thống, có thể chọn topping trân châu."
+  }
+]

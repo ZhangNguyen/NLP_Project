@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot Đặt Món Ăn</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+        h1 {
+            text-align: center;
+        }
+        #chat-box {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px;
+            height: 480px;
+            overflow-y: auto;
+        }
+        .msg {
+            margin-bottom: 10px;
+        }
+        .msg.user {
+            text-align: right;
+        }
+        .msg.user span {
+            display: inline-block;
+            background: #007bff;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 12px;
+        }
+        .msg.bot span {
+            display: inline-block;
+            background: #e9ecef;
+            color: #000;
+            padding: 8px 12px;
+            border-radius: 12px;
+        }
+        .input-area {
+            margin-top: 12px;
+            display: flex;
+            gap: 8px;
+        }
+        .input-area input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        .input-area button {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            background: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        .input-area button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .footer {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Chatbot Đặt Món Ăn Online</h1>
+    <div id="chat-box">
+        <div class="msg bot">
+            <span>Chào anh/chị 👋, em là chatbot hỗ trợ đặt món. Anh/chị có thể cho em biết anh chị cần hỗ trợ gì không ạ.</span>
+        </div>
+    </div>
+    <div class="input-area">
+        <input id="user-input" type="text" placeholder="Nhập nội dung..." autocomplete="off" />
+        <button id="send-btn">Gửi</button>
+    </div>
+    <div class="footer">
+        Lựa chọn 2 – NLP Assignment: Chatbot + LLM (Ollama) + RAG (menu.json)
+    </div>
+</div>
+
+<script>
+    const chatBox = document.getElementById("chat-box");
+    const userInput = document.getElementById("user-input");
+    const sendBtn = document.getElementById("send-btn");
+
+    function appendMessage(text, sender) {
+        const msgDiv = document.createElement("div");
+        msgDiv.classList.add("msg", sender);
+        const span = document.createElement("span");
+        span.textContent = text;
+        msgDiv.appendChild(span);
+        chatBox.appendChild(msgDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    async function sendMessage() {
+        const text = userInput.value.trim();
+        if (!text) return;
+
+        appendMessage(text, "user");
+        userInput.value = "";
+        userInput.focus();
+
+        sendBtn.disabled = true;
+
+        try {
+            const resp = await fetch("/api/chat", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({message: text})
+            });
+
+            if (!resp.ok) {
+                appendMessage("Xin lỗi, hệ thống đang bị lỗi. (HTTP " + resp.status + ")", "bot");
+            } else {
+                const data = await resp.json();
+                if (data.reply) {
+                    appendMessage(data.reply, "bot");
+                } else if (data.error) {
+                    appendMessage("Lỗi: " + data.error, "bot");
+                } else {
+                    appendMessage("Xin lỗi, em không hiểu phản hồi từ server.", "bot");
+                }
+            }
+        } catch (e) {
+            appendMessage("Xin lỗi, không gọi được server: " + e, "bot");
+        } finally {
+            sendBtn.disabled = false;
+        }
+    }
+
+    sendBtn.addEventListener("click", sendMessage);
+    userInput.addEventListener("keydown", function(e) {
+        if (e.key === "Enter") {
+            sendMessage();
+        }
+    });
+</script>
+</body>
+</html>

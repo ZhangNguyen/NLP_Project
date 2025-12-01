@@ -1,0 +1,31 @@
+{
+  "start": "S",
+  "rules": [
+    { "lhs": "S", "rhs": ["UTTERANCE"] },
+
+    { "lhs": "UTTERANCE", "rhs": ["PRON", "VP_ORDER"] },
+    { "lhs": "UTTERANCE", "rhs": ["QUESTION_MENU"] },
+    { "lhs": "UTTERANCE", "rhs": ["ADD_ITEM"] },
+    { "lhs": "UTTERANCE", "rhs": ["CANCEL_ITEM"] },
+
+    { "lhs": "PRON", "rhs": ["\"tôi\""] },
+
+    { "lhs": "VP_ORDER", "rhs": ["\"muốn\"", "\"đặt\"", "QUANTITY", "ITEM", "TIME_PHRASE"] },
+    { "lhs": "QUESTION_MENU", "rhs": ["\"có\"", "ITEM", "\"không\""] },
+    { "lhs": "ADD_ITEM", "rhs": ["\"thêm\"", "QUANTITY", "ITEM", "\"vào\"", "\"đơn\"", "\"nhé\""] },
+    { "lhs": "CANCEL_ITEM", "rhs": ["\"hủy\"", "ITEM", "\"trong\"", "\"đơn\"", "\"hàng\""] },
+
+    { "lhs": "QUANTITY", "rhs": ["NUMBER", "\"phần\""] },
+    { "lhs": "NUMBER", "rhs": ["\"1\""] },
+    { "lhs": "NUMBER", "rhs": ["\"2\""] },
+    { "lhs": "NUMBER", "rhs": ["\"3\""] },
+
+    { "lhs": "ITEM", "rhs": ["\"phở\"", "\"bò\""] },
+    { "lhs": "ITEM", "rhs": ["\"bún\"", "\"chả\""] },
+    { "lhs": "ITEM", "rhs": ["\"trà\"", "\"sữa\""] },
+    { "lhs": "ITEM", "rhs": ["\"gà\"", "\"rán\""] },
+
+    { "lhs": "TIME_PHRASE", "rhs": ["\"giao\"", "\"lúc\"", "HOUR"] },
+    { "lhs": "HOUR", "rhs": ["\"12\"", "\"giờ\""] }
+  ]
+}

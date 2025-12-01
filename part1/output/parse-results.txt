@@ -1,0 +1,5 @@
+(S (UTTERANCE (PRON tôi) (VP_ORDER muốn đặt (QUANTITY (NUMBER 2) phần) (ITEM phở bò) (TIME_PHRASE giao lúc (HOUR 12 giờ)))))
+(S (UTTERANCE (QUESTION_MENU có (ITEM trà sữa) không)))
+(S (UTTERANCE (ADD_ITEM thêm (QUANTITY (NUMBER 1) phần) (ITEM gà rán) vào đơn nhé)))
+(S (UTTERANCE (CANCEL_ITEM hủy (ITEM bún chả) trong đơn hàng)))
+()

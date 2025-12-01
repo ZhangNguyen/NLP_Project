@@ -1,0 +1,21 @@
+START S
+S -> UTTERANCE
+UTTERANCE -> PRON VP_ORDER
+UTTERANCE -> QUESTION_MENU
+UTTERANCE -> ADD_ITEM
+UTTERANCE -> CANCEL_ITEM
+PRON -> "tôi"
+VP_ORDER -> "muốn" "đặt" QUANTITY ITEM TIME_PHRASE
+QUESTION_MENU -> "có" ITEM "không"
+ADD_ITEM -> "thêm" QUANTITY ITEM "vào" "đơn" "nhé"
+CANCEL_ITEM -> "hủy" ITEM "trong" "đơn" "hàng"
+QUANTITY -> NUMBER "phần"
+NUMBER -> "1"
+NUMBER -> "2"
+NUMBER -> "3"
+ITEM -> "phở" "bò"
+ITEM -> "bún" "chả"
+ITEM -> "trà" "sữa"
+ITEM -> "gà" "rán"
+TIME_PHRASE -> "giao" "lúc" HOUR
+HOUR -> "12" "giờ"

@@ -1,0 +1,32 @@
+tôi muốn đặt 1 phần phở bò giao lúc 12 giờ
+tôi muốn đặt 1 phần bún chả giao lúc 12 giờ
+tôi muốn đặt 1 phần trà sữa giao lúc 12 giờ
+tôi muốn đặt 1 phần gà rán giao lúc 12 giờ
+tôi muốn đặt 2 phần phở bò giao lúc 12 giờ
+tôi muốn đặt 2 phần bún chả giao lúc 12 giờ
+tôi muốn đặt 2 phần trà sữa giao lúc 12 giờ
+tôi muốn đặt 2 phần gà rán giao lúc 12 giờ
+tôi muốn đặt 3 phần phở bò giao lúc 12 giờ
+tôi muốn đặt 3 phần bún chả giao lúc 12 giờ
+tôi muốn đặt 3 phần trà sữa giao lúc 12 giờ
+tôi muốn đặt 3 phần gà rán giao lúc 12 giờ
+có phở bò không
+có bún chả không
+có trà sữa không
+có gà rán không
+thêm 1 phần phở bò vào đơn nhé
+thêm 1 phần bún chả vào đơn nhé
+thêm 1 phần trà sữa vào đơn nhé
+thêm 1 phần gà rán vào đơn nhé
+thêm 2 phần phở bò vào đơn nhé
+thêm 2 phần bún chả vào đơn nhé
+thêm 2 phần trà sữa vào đơn nhé
+thêm 2 phần gà rán vào đơn nhé
+thêm 3 phần phở bò vào đơn nhé
+thêm 3 phần bún chả vào đơn nhé
+thêm 3 phần trà sữa vào đơn nhé
+thêm 3 phần gà rán vào đơn nhé
+hủy phở bò trong đơn hàng
+hủy bún chả trong đơn hàng
+hủy trà sữa trong đơn hàng
+hủy gà rán trong đơn hàng
