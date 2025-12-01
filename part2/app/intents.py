@@ -4,9 +4,9 @@ from typing import Dict
 INTENT_KEYWORDS = {
     "ask_menu": [r"menu", r"món nào", r"danh sách món", r"những món gì", r"có món gì", r"thực đơn"],
     "ask_price": [r"bao nhiêu", r"giá", r"bao nhieu", r"bao tiền"],
-    "order_food": [r"đặt", r"cho tôi", r"order", r"mua", r"cho mình",r"thêm", r"gọi thêm", r"add"],
-    "cancel_item": [r"hủy", r"huy mon", r"bỏ món", r"xóa món"],
-    "ask_order": [r"đơn của tôi", r"tôi đã đặt", r"tôi đang đặt gì", r"order của tôi", r"lịch sử đơn", r"đã đặt những món gì"],
+    "order_food": [r"đặt", r"order", r"mua", r"cho tôi","thêm", r"add", r"gọi"],
+    "cancel_item": [r"hủy", r"huy", r"bỏ", r"xóa"],
+    "ask_order": [r"đơn", r"đã đặt", r"đang đặt gì", r"order", r"lịch sử đơn", r"đã đặt những món gì"],
     "schedule_delivery": [r"giao lúc", r"giao vào", r"giờ giao", r"\d+h"],
 
     # ➜ update số lượng

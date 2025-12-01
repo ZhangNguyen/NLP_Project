@@ -41,6 +41,14 @@ class FoodChatbot:
         menu = format_menu_for_llm()
         if intent == "ask_menu":
             action_result = f"Dạ, menu của bên em bao gồm {menu}"
+        # Hủy món
+        elif intent == "cancel_item" and item:
+            self.orders.remove_item(item)
+            action_result = f"Đã hủy món {item}."
+            # Cập nhật số lượng
+        elif intent == "update_quantity" and item:
+            self.orders.update_quantity(item, qty)
+            action_result = f"Đã cập nhật {item} thành {qty} phần."
         # Đặt món mới
         elif intent == "order_food" and item:
             # Tìm món trong menu
@@ -59,20 +67,11 @@ class FoodChatbot:
                 # Món hợp lệ & còn hàng → cho vào giỏ
                 self.orders.add_item(item_info["name"], qty)
                 action_result = f"Đã thêm {qty} x {item_info['name']} vào đơn."
-
-        # Hủy món
-        elif intent == "cancel_item" and item:
-            self.orders.remove_item(item)
-            action_result = f"Đã hủy món {item}."
-
         elif intent == "ask_price" and not item:
             last = self.orders.get_last_item_name()
             if last:
                 item = last
-        # Cập nhật số lượng
-        elif intent == "update_quantity" and item:
-            self.orders.update_quantity(item, qty)
-            action_result = f"Đã cập nhật {item} thành {qty} phần."
+
 
         # Cập nhật tùy chọn (ít đá, ít đường, ít hành…)
         elif intent == "update_option":
