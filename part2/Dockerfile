@@ -1,23 +1,24 @@
-# Image Python nhẹ
 FROM python:3.10-slim
 
-# Tạo thư mục làm việc trong container
+# 1. Tắt buffer để log ra ngay
+ENV PYTHONUNBUFFERED=1
+
+# 2. Làm việc trong /app
 WORKDIR /app
 
-# Copy file requirements trước để pip install (tối ưu cache)
+# 3. Cài lib Python
 COPY requirements.txt .
-
-# Cài các package Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy toàn bộ mã nguồn vào container
+# 4. Copy toàn bộ source vào container
 COPY . .
 
-# Endpoint mặc định để gọi Ollama (sẽ override bằng ENV khi chạy)
-ENV LLM_ENDPOINT=http://host.docker.internal:11434
+# 5. Biến môi trường cho Flask (dùng factory create_app trong app/web.py)
+ENV FLASK_APP=app.web:create_app
+ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_RUN_PORT=8000
 
-# Flask chạy port 8000
 EXPOSE 8000
 
-# Chạy web server Flask
-CMD ["python", "-m", "app.web"]
+# 6. Lệnh chạy chính
+CMD ["flask", "run"]
